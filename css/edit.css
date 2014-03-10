@@ -2,14 +2,18 @@
 
 
 
-.image1{
+#items .image1{
 	padding-bottom: 25px;
 }
 
-.image2{
+#items .image2{
 	padding-bottom: 25px;
 }
 
-.image3{
+#items .image3{
 	padding-bottom: 25px;
+}
+
+.image_edit{
+	font-size: 8px;
 }

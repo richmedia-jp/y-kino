@@ -3,10 +3,17 @@
 
 #items{
 	float:left;
+	padding-top: 5px;
    
 }
+
 #main li {
 	margin: 10px;
+}
+
+
+#items li {
+	margin-bottom:15px;
 }
 
 form {
@@ -15,20 +22,9 @@ form {
 }
 
 #items .intro_text{
-	padding: 20px 0 50px 0;
+	padding: 25px 0 50px 0;
 }
 
-form .image1{
-	padding-bottom: 5px;
-}
-
-form .image2{
-	padding-bottom: 5px;
-}
-form .image3{
-	padding-bottom: 5px;
-}
-
-.image_edit{
-	font-size: 8px;
+.entries ul li{
+	padding:3px 29px;
 }

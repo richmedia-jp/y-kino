@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+
+body {
+    font-family: Arial, Verdana, sans-serif;
+    margin: 0 auto;
+    width: 60%;
+}
+body li{
+	 list-style: none;
+}
+header{
+	border-bottom: 1px solid;
+	margin-bottom: 30px;
+}
+
+#sidebar{
+	float:left;
+}
+
+#menu p{
+	border-bottom: 1px solid;
+	margin-bottom: 10px;
+}
+
+#main{
+	padding-left: 250px;
+}
+
+#main  {
+	margin: 10px 0 0 100px;
+}

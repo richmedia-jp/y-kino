@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+#items{
+	float:left;
+   
+}
+#main li {
+	margin: 10px;
+}
+
+form {
+  
+ 	padding-top: 1px;
+}
+
+#items .intro_text{
+	padding: 40px 0 27px 0;
+}
+
+.last_name{
+	margin-right: 10px;
+}

@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="utf-8">
-	<title>美容室登録</title>
+	<meta charset="UTF-8">
+	<title>美容室編集</title>
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css">
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../../css/beauty_salon.css">
+	<link rel="stylesheet" type="text/css" href="../../css/edit.css">
 </head>
 <body>
+
+
+
+
+
+
 	<div id="wrap">
 	<header>
 		<img src="ロゴ挿入">
@@ -42,20 +49,50 @@
 				<li class="tag">登録タグ複数可</li>
 			</ul>
 			
-			<form action="">
+			<form action="upload.php">
 				<ul>
 					<li class="beauty_salon"><input type="text" name="beauty_salon_name" size="30" maxlength="30"></li>
-					<li class="prefectual"><select name="prefectual">
-				</select></li>
+					<!--　都道府県を表示する-->
+					<?php
+					//データベースに接続する
+					$link = mysql_connect('localhost','yukikino','yk19911010');
+
+					if (!$link) {
+					die('データベースに接続できません。'.mysql_error());
+					}
+
+					//データベースを選択する
+					mysql_select_db('beauty_salon',$link);
+					mysql_set_charset('utf8');
+
+					$result = mysql_query('SELECT prefectual_name FROM prefectual_code');
+					if (!$result) {
+					die('クエリーが失敗しました。'.mysql_error());
+					}
+
+					// 内容を表示する
+					echo "<select>";
+					while ($row = mysql_fetch_assoc($result)) {
+					echo "<option>{$row['prefectual_name']}</option>";
+					}
+					echo "</select>";
+
+					// 接続を閉じる
+					mysql_close($link);
+
+						?>
 					<li class="address1"><input type="text" name="address1" size="30" maxlength="30" ></li>
 					<li class="address2"><input type="text" name="address2" size="30" maxlength="30" ></li>
 					<li class="tel"><input type="text" name="tel" size="30" maxlength="30" ></li>
 					<li class="work_hour"><input type="text" name="work_hour" size="30" maxlength="30" ></li>
 					<li class="intro_text"><input type="text" name="intro_title" size="30" maxlength="30" ></li>
-					<li class="intro_text"><textarea name="intro_text" cols="50" rows="5"></textarea></li>
+					<li class="intro_text"><textarea name="intro_text" cols="30" rows="5"></textarea></li>
 					<li class="image1"><input type="file" name="beautician" size="30"></li>
+					<li class="image_edit"><input type="checkbox" name="recommend_flag" value="">画像を削除する</li>
 					<li class="image2"><input type="file" name="beautician" size="30"></li>
+					<li class="image_edit"><input type="checkbox" name="recommend_flag" value="">画像を削除する</li>
 					<li class="image3"><input type="file" name="beautician" size="30"></li>
+					<li class="image_edit"><input type="checkbox" name="recommend_flag" value="">画像を削除する</li>
 					<li class="recommend"><input type="checkbox" name="recommend_flag" value=""></li>
 					<li class="tag"><select name="tag">
 				</select><select name="tag">

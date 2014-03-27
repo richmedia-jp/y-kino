@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<title>美容室編集</title>
+	<meta charset="utf-8">
+	<title>美容室登録</title>
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css">
-	<link rel="stylesheet" type="text/css" href="../../css/style.css">
-	<link rel="stylesheet" type="text/css" href="../../css/beauty_salon.css">
-	<link rel="stylesheet" type="text/css" href="../../css/edit.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/beauty_salon.css">
 </head>
 <body>
+
+
 	<div id="wrap">
 	<header>
+
 		<img src="ロゴ挿入">
+	
+
 	</header>
 		<div id="contents">
 			<div id="sidebar">
@@ -43,38 +47,62 @@
 				<li class="tag">登録タグ複数可</li>
 			</ul>
 			
-			<form action="">
+			<form action="upload.php" method="post"　 enctype="multipart/form-data">
 				<ul>
 					<li class="beauty_salon"><input type="text" name="beauty_salon_name" size="30" maxlength="30"></li>
-					<li class="prefectual"><select name="prefectual">
-				</select></li>
+					<!--　都道府県を表示する-->
+				<?php
+				
+
+					// 内容を表示する
+					echo "<select name='prefectual_id'>";
+					while ($row = mysql_fetch_assoc($result)) {
+					echo "<option value='{$row['prefectual_id']}'>{$row['prefectual_name']}</option>";
+					}
+					echo "</select>";
+
+
+						?>				
 					<li class="address1"><input type="text" name="address1" size="30" maxlength="30" ></li>
 					<li class="address2"><input type="text" name="address2" size="30" maxlength="30" ></li>
 					<li class="tel"><input type="text" name="tel" size="30" maxlength="30" ></li>
 					<li class="work_hour"><input type="text" name="work_hour" size="30" maxlength="30" ></li>
 					<li class="intro_text"><input type="text" name="intro_title" size="30" maxlength="30" ></li>
-					<li class="intro_text"><textarea name="intro_text" cols="30" rows="5"></textarea></li>
-					<li class="image1"><input type="file" name="beautician" size="30"></li>
-					<li class="image_edit"><input type="checkbox" name="recommend_flag" value="">画像を削除する</li>
-					<li class="image2"><input type="file" name="beautician" size="30"></li>
-					<li class="image_edit"><input type="checkbox" name="recommend_flag" value="">画像を削除する</li>
-					<li class="image3"><input type="file" name="beautician" size="30"></li>
-					<li class="image_edit"><input type="checkbox" name="recommend_flag" value="">画像を削除する</li>
-					<li class="recommend"><input type="checkbox" name="recommend_flag" value=""></li>
-					<li class="tag"><select name="tag">
-				</select><select name="tag">
-				</select></li>
-					
-					
-					
+					<li class="intro_text"><textarea name="intro_text" cols="50" rows="5"></textarea></li>
+					<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE;?>">
+					<li class="image1"><input type="file"  name="upfile[0]" size="30"></li>
+					<li class="image2"><input type="file" name="upfile[1]" size="30"></li>
+					<li class="image3"><input type="file" name="upfile[2]" size="30"></li>
+					<?php
+			
 
+					// 内容を表示する
+					echo "<select>";
+					while ($row2 = mysql_fetch_assoc($result2)) {
+					echo "<option value='{$row2['beauty_salon_tag_id']}'>{$row2['beauty_salon_tag']}</option>";
+					}
+					echo "</select>";
+					
+		
 
+						?>			
+
+		<li><input  type="submit" value="登録"></li>
 				</ul>
 
-
+		
 			</form>
 
-				<li><input  type="submit" value="登録"></li>
+
+		<?php if (count($errors)):?>
+				<ul class="error_list">
+					<?php foreach ($errors as $error) :?>
+					<li>
+						<?php echo htmlspecialchars($error,ENT_QUOTES,'UTF-8')?>
+					</li>	
+				<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
 
 			</div>
 			</div>
@@ -82,3 +110,4 @@
 	</div>
 
 </body>
+

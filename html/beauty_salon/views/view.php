@@ -52,31 +52,15 @@
 					<li class="beauty_salon"><input type="text" name="beauty_salon_name" size="30" maxlength="30"></li>
 					<!--　都道府県を表示する-->
 				<?php
-					//データベースに接続する
-					$link = mysql_connect('localhost','yukikino','yk19911010');
-
-					if (!$link) {
-					die('データベースに接続できません。'.mysql_error());
-					}
-
-					//データベースを選択する
-					mysql_select_db('beauty_salon',$link);
-					mysql_set_charset('utf8');
-
-					$result = mysql_query('SELECT prefectual_name FROM prefectual_code');
-					if (!$result) {
-					die('クエリーが失敗しました。'.mysql_error());
-					}
+				
 
 					// 内容を表示する
-					echo "<select>";
+					echo "<select name='prefectual_id'>";
 					while ($row = mysql_fetch_assoc($result)) {
-					echo "<option>{$row['prefectual_name']}</option>";
+					echo "<option value='{$row['prefectual_id']}'>{$row['prefectual_name']}</option>";
 					}
 					echo "</select>";
 
-					// 接続を閉じる
-					mysql_close($link);
 
 						?>				
 					<li class="address1"><input type="text" name="address1" size="30" maxlength="30" ></li>
@@ -89,14 +73,24 @@
 					<li class="image1"><input type="file"  name="upfile[]" size="30"></li>
 					<li class="image2"><input type="file" name="upfile[]" size="30"></li>
 					<li class="image3"><input type="file" name="upfile[]" size="30"></li>
-					<li class="recommend"><input type="checkbox" name="recommend_flag" value=""></li>
-					<li class="tag"><select name="tag">
-				</select><select name="tag">
-				</select></li>
+					<?php
+			
 
-				</ul>
+					// 内容を表示する
+					echo "<select>";
+					while ($row2 = mysql_fetch_assoc($result2)) {
+					echo "<option value='{$row2['beauty_salon_tag_id']}'>{$row2['beauty_salon_tag']}</option>";
+					}
+					echo "</select>";
+					
+		
+
+						?>			
 
 		<li><input  type="submit" value="登録"></li>
+				</ul>
+
+		
 			</form>
 
 
@@ -109,7 +103,6 @@
 				<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
-
 
 			</div>
 			</div>

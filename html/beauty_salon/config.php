@@ -7,7 +7,9 @@ define('THUMBNAIL_WIDTH', 72);
 
 define('MAX_FILE_SIZE', 1024000);
 
+
 //error_reporting ('E_ALL | E_STRICT');
+
 
 
 //GD

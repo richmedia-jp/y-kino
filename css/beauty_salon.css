@@ -15,10 +15,17 @@
 #items li {
 	margin-bottom:15px;
 }
+#items ul {
+	height: 591px;
+}
 
 form {
   
  	padding-top: 1px;
+}
+
+form ul {
+	height: 591px;
 }
 
 #items .intro_text{

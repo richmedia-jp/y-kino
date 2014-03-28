@@ -1,20 +1,7 @@
 <?php
 	
 	require_once('config.php');
-	//データベースに接続
-	$db_host = "localhost";
-	$db_user = "yukikino";
-	$db_passwd = "yk19911010";
-
-	$link = mysql_connect($db_host,$db_user,$db_passwd);
-
-	if (!$link) {
-		die('データベースに接続できません。'.mysql_error());
-				}
-	//データベースを選択する
-	mysql_select_db('beauty_salon',$link);
-	mysql_set_charset('utf8');
-
+	
 	$errors =array();
 
 

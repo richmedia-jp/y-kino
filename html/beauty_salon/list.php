@@ -1,3 +1,7 @@
+<?php
+require_once('config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="../../css/list.css">
 </head>
 <body>
+	<?php require_once('config.php'); ?>
 	<div id="wrap">
 	<header>
 		<img src="ロゴ挿入">
@@ -48,9 +53,37 @@
 						<li>削除</li>
 					</ul>
 					</div>
-				</div>
 	
+				<div class="entries">
+					<ul>
+						<li><?php  $result= mysql_query('SELECT beauty_salon_id,beauty_salon_name,prefectual_id,intro_title FROM beauty_salon');
+		if (!$result) {
+				die('クエリーが失敗しました。'.mysql_error());
+				} 
+				while ($data = mysql_fetch_array($result)){
 
+				    echo "<ul>";
+				    
+				        //列を出力
+				        echo "<li>" . $data[0];
+				        echo "</li>";
+				      
+				        echo "<li>" . $data[1];
+				        echo "</li>";
+				       
+				        echo "<li>" . $data[2];
+				        echo "</li>";
+
+				        echo "<li>" . $data[3];
+				        echo "</li>";
+				      
+				    echo "</ul>";
+				};
+				?>
+					
+			</div>
+	
+				</div>
 				
 			</div>
 		</div>
